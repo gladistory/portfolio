@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio | Desenvolvedor & IA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">Meu <span>Portfólio</span>.</div>
+        <ul class="nav-links">
+            <li><a href="#home">Início</a></li>
+            <li><a href="#projetos">Projetos</a></li>
+            <li><a href="#ia-automacao">IA & Automação</a></li>
+            <li><a href="#dev">Desenvolvimento</a></li>
+        </ul>
+        <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+    </nav>
+
+    <section id="home" class="hero hidden">
+        <div class="hero-container">
+            <div class="hero-text">
+                <h3>Olá, eu sou</h3>
+                <h1>Vinicius Santos</h1>
+                <h2 class="typing-text">Desenvolvedor de Software & Eng. de IA</h2>
+                <p>
+                    Construo aplicações e automatizo processos com
+                    <span class="highlight">Inteligência Artificial</span>.
+                    Foco em otimizar fluxos de trabalho e aumentar a eficiência.
+                </p>
+                <div class="hero-btns">
+                    <a href="#projetos" class="btn primary">Ver Projetos</a>
+                    <a href="https://wa.me/5548996761343?text=Ol%C3%A1!%20Acessei%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar%20sobre%20uma%20oportunidade%2Fprojeto."
+                        class="btn secondary" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Entrar em Contato
+                    </a>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/vinicius-de-souza-santos-88a60b351/" target="_blank"><i
+                            class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/gladistory" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://wa.me/5548996761343?text=Ol%C3%A1!%20Acessei%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar%20sobre%20uma%20oportunidade%2Fprojeto."
+                        target="_blank"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="hero-img">
+                <div class="img-border">
+                    <img src="img/perfil.jpg" alt="Foto de Perfil">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projetos" class="hidden">
+        <h2 class="section-title">Projetos Recentes</h2>
+        <div class="grid-container">
+            <div class="card project-card social-links">
+                <div class="card-image" style="position: relative;">
+                    <i class="fas fa-heartbeat" style="color: #38bdf8;"></i>
+                    <div class="project-overlay">
+                        <span>HealthTech & AI</span>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <h3>Essentia Technologies</h3>
+                    <p>
+                        Desenvolvimento de soluções HealthTech focadas na evolução da prática clínica.
+                        Destaque para o <strong>Easy Health PRO MAX + AI</strong>, que utiliza IA generativa
+                        e preditiva para suporte à decisão clínica em tempo real.
+                    </p>
+                </div>
+
+                <a href="https://essentiatechnologies.com.br/" target="_blank"
+                    style="text-decoration: none; color: var(--accent); font-size: small; margin-top: 20px;"><i
+                        class="fas fa-globe"></i> Acessar Página</a>
+            </div>
+
+            <div class="card project-card social-links">
+                <div class="card-content">
+                    <h3>Gestão Farmacêutica</h3>
+                    <p>
+                        Solução completa para gestão farmacêutica. Inclui controle rigoroso de estoque,
+                        ponto de venda (PDV) ágil e módulos de relatórios financeiros detalhados.
+                        Focado na experiência do usuário e eficiência operacional.
+                    </p>
+                </div>
+
+                <a href="https://github.com/gladistory/sistema-essential-final/blob/master/README.md" target="_blank"
+                    style="text-decoration: none; color: var(--accent); font-size: small; margin-top: 20px;"><i
+                        class="fas fa-globe"></i> Acessar Página</a>
+            </div>
+
+            <div class="card project-card">
+                <div class="card-content social-links">
+                    <h3>Gerador de Certificados</h3>
+                    <p>
+                        Aplicação web para automação de documentos. Permite a geração em massa de certificados
+                        personalizados
+                        para eventos e cursos, com visualização em tempo real e exportação otimizada.
+                    </p>
+                    <a href="https://gladistory.github.io/gerador-certificados/" target="_blank"
+                    style="text-decoration: none; color: var(--accent); font-size: small; margin-top: 20px;"><i
+                        class="fas fa-globe"></i> Acessar Página</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+
+    <section id="ia-automacao" class="hidden">
+        <h2 class="section-title">Automação & IA</h2>
+        <p class="section-desc" style="margin-bottom: 20px;">Otimizando fluxos de trabalho com inteligência.</p>
+
+        <div class="cards-horizontal">
+            <div class="info-card">
+                <h3><i class="fas fa-robot"></i> Bots de Automação</h3>
+                <p>Scripts em Python para web scraping, preenchimento automático de formulários e extração de dados
+                    massivos.</p>
+            </div>
+            <div class="info-card">
+                <h3><i class="fas fa-brain"></i> Integração LLM</h3>
+                <p>Implementação de APIs da OpenAI e Anthropic para criar assistentes virtuais.
+                </p>
+            </div>
+            <div class="info-card">
+                <h3><i class="fas fa-cogs"></i> Workflows ETL</h3>
+                <p>Pipelines de dados automatizados para transformar dados brutos em insights acionáveis.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="dev" class="hidden">
+        <h2 class="section-title">Tech Stack & Dev</h2>
+        <div class="tech-grid">
+            <div class="tech-item">
+                <i class="fab fa-html5"></i>
+                <span>HTML5</span>
+            </div>
+            <div class="tech-item">
+                <i class="fab fa-css3-alt"></i>
+                <span>CSS3</span>
+            </div>
+            <div class="tech-item">
+                <i class="fab fa-js"></i>
+                <span>JavaScript</span>
+            </div>
+            <div class="tech-item">
+                <i class="fab fa-python"></i>
+                <span>Python</span>
+            </div>
+            <div class="tech-item">
+                <i class="fas fa-database"></i>
+                <span>SQL</span>
+            </div>
+            <div class="tech-item">
+                <i class="fab fa-docker"></i>
+                <span>Docker</span>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Vinicius Santos. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+
+</html>
