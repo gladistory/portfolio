@@ -19,10 +19,36 @@
     scroll-behavior: smooth;
 }
 
+
 body {
-    background-color: var(--bg-color);
+    background-color: #0f172a; /* Cor base */
     color: var(--text-main);
     overflow-x: hidden;
+    
+    /* EFEITO DE LUZ DE FUNDO (GLOW) */
+    background-image: 
+        /* Luz Azul ciano no canto superior esquerdo */
+        radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.15) 0%, transparent 40%),
+        /* Luz Roxa no canto inferior direito */
+        radial-gradient(circle at 90% 80%, rgba(129, 140, 248, 0.15) 0%, transparent 40%);
+        
+    background-attachment: fixed; /* O fundo fica parado enquanto você rola */
+}
+
+/* Adicione isso logo após o bloco body no seu CSS */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Cria uma grade sutil */
+    background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px; /* Tamanho dos quadrados da grade */
+    z-index: -1; /* Fica atrás de tudo */
+    pointer-events: none;
 }
 
 /* Navbar com efeito de vidro */
@@ -96,7 +122,7 @@ section {
 }
 
 .hero-text h1 { font-size: 3.5rem; line-height: 1.1; }
-.hero-text h2 { color: var(--accent); font-size: 1.5rem; margin-bottom: 1rem; font-weight: 500; }
+.hero-text h2 { color: var(--accent); font-size: 1rem; margin-bottom: 1rem; font-weight: 500; }
 
 /* Botões Estilizados */
 .hero-btns { margin: 2rem 0; display: flex; gap: 1rem; }
@@ -110,8 +136,8 @@ section {
 /* Foto com efeito Neon */
 .hero-img { flex: 1; display: flex; justify-content: center; }
 .img-border {
-    width: 250px;
-    height: 250px;
+    width: 300px;
+    height: 300px;
     border-radius: 50%;
     background: var(--gradient);
     padding: 5px; /* Espessura da borda colorida */
@@ -197,10 +223,43 @@ section {
     letter-spacing: 1px;
 }
 
-/* Ícone específico do card da Essentia para ficar centralizado e bonito caso não tenha print */
-.card-image i.fa-heartbeat {
-    font-size: 4rem;
-    filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.5));
+/* Container da imagem no topo do card */
+.card-image {
+    height: 180px; /* Aumentei um pouco para dar mais destaque */
+    width: 100%;
+    background: #1e293b; /* Cor de fundo caso a imagem demore a carregar */
+    position: relative;
+    overflow: hidden; /* Essencial para o efeito de zoom não "vazar" do card */
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+/* A imagem em si */
+.card-image img {
+    width: 100%;
+    height: 100%;
+    /* O SEGREDO: object-fit: cover faz a imagem preencher o espaço sem distorcer, 
+       cortando as bordas se necessário (igual background-size: cover) */
+    object-fit: cover; 
+    transition: transform 0.5s ease; /* Suavidade para o hover */
+}
+
+/* Efeito de Zoom Suave ao passar o mouse no card */
+.card:hover .card-image img {
+    transform: scale(1.05);
+}
+
+/* Ajuste do Overlay para ficar acima da imagem */
+.project-overlay {
+    z-index: 2;
+    /* Mantém o restante do CSS do overlay que já tínhamos */
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(56, 189, 248, 0.2);
+    backdrop-filter: blur(5px);
+    padding: 5px 10px;
+    border-radius: 20px;
+    border: 1px solid var(--accent);
 }
 
 .card-icon { font-size: 2rem; color: var(--accent); margin-bottom: 1rem; }
@@ -302,3 +361,249 @@ footer {
         display: block;
     }
 }
+
+
+/* Container Geral dos Projetos */
+.projects-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8rem; /* Espaço generoso entre os projetos */
+    padding: 2rem 0;
+}
+
+/* A Linha do Projeto */
+.project-row {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    position: relative;
+}
+
+/* Classe para inverter a ordem (Texto - Imagem) */
+.project-row.inverted {
+    flex-direction: row-reverse;
+}
+
+/* Área da Imagem (Visual) */
+.project-visual {
+    flex: 1.2; /* Ocupa um pouco mais de espaço que o texto */
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: transform 0.4s ease;
+}
+
+/* Efeito de "Glow" atrás da imagem */
+.project-visual::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: var(--gradient);
+    opacity: 0.15;
+    z-index: 1; /* Fica acima da img mas com blend mode se quiser */
+    pointer-events: none;
+    mix-blend-mode: overlay;
+}
+
+.project-visual img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+/* Interação ao passar o mouse */
+.project-row:hover .project-visual {
+    transform: translateY(-5px);
+    border-color: var(--accent);
+}
+.project-row:hover .project-visual img {
+    transform: scale(1.03);
+}
+
+/* Área de Texto (Info) */
+.project-info {
+    flex: 0.8;
+}
+
+.project-cat {
+    color: var(--accent);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.project-info h3 {
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-main);
+}
+
+.project-info p {
+    color: var(--text-sec);
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+}
+
+/* Lista de Tecnologias (Minimalista) */
+.tech-stack-clean {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 2rem;
+    font-family: monospace; /* Fonte técnica */
+}
+.tech-stack-clean span {
+    color: var(--text-main);
+    font-size: 0.9rem;
+    border-bottom: 1px solid var(--accent); /* Linha sutil abaixo */
+    padding-bottom: 2px;
+}
+
+/* Links em texto (Mais elegante que botões grandes) */
+.project-links {
+    display: flex;
+    gap: 20px;
+}
+
+.link-text {
+    color: var(--text-main);
+    text-decoration: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.3s;
+}
+
+.link-text:hover {
+    color: var(--accent);
+    transform: translateX(5px);
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 900px) {
+    .project-row, .project-row.inverted {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .project-visual {
+        width: 100%;
+    }
+    
+    .project-info {
+        width: 100%;
+        text-align: left; /* Ou center se preferir */
+    }
+}
+
+
+/* Cabeçalho centralizado da seção */
+.section-header-center {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 4rem auto;
+}
+.section-subtitle {
+    color: var(--text-sec);
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Grid da Automação */
+.automation-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    align-items: stretch; /* Faz todos os cards terem a mesma altura */
+}
+
+/* Card de Automação */
+.auto-card {
+    background: rgba(30, 41, 59, 0.4); /* Fundo semi-transparente */
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 16px;
+    padding: 2.5rem;
+    transition: 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efeito Hover */
+.auto-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent);
+    background: rgba(30, 41, 59, 0.7);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+}
+
+/* Destaque para o card do meio (IA/RAG) */
+.auto-card.featured {
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    background: linear-gradient(145deg, rgba(30, 41, 59, 0.6), rgba(15, 23, 42, 0.8));
+}
+.auto-card.featured::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 3px;
+    background: var(--gradient);
+}
+
+/* Ícones */
+.auto-icon {
+    width: 60px;
+    height: 60px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    color: var(--accent);
+}
+
+.auto-content h3 {
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+    color: var(--text-main);
+}
+.auto-content p {
+    color: var(--text-sec);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    flex-grow: 1; /* Empurra as tags para baixo */
+}
+
+/* Lista de Ferramentas (Tags) */
+.tools-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tool-badge {
+    font-size: 0.75rem;
+    padding: 6px 12px;
+    border-radius: 20px;
+    background: #0f172a;
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--text-sec);
+    font-weight: 500;
+}
+
+/* Cores específicas para ferramentas chave */
+.tool-badge.n8n { color: #ff6b6b; border-color: rgba(255, 107, 107, 0.2); }
+.tool-badge.google { color: #34a853; border-color: rgba(52, 168, 83, 0.2); }
+.tool-badge.qdrant { color: #b76bf9; border-color: rgba(183, 107, 249, 0.2); }
+.tool-badge.openai { color: #10a37f; border-color: rgba(16, 163, 127, 0.2); }
