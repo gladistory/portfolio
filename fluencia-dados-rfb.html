@@ -327,6 +327,8 @@
             align-items: center;
             gap: 8px;
             border: 1.5px solid transparent;
+            background: none;
+            appearance: none;
             cursor: pointer;
             transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
         }
@@ -871,6 +873,70 @@
             max-width: 70ch;
             margin-top: 18px;
         }
+
+        /* ---------- cookie banner ---------- */
+        .cookie-banner {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 200;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            padding: 20px 24px;
+            background: var(--paper);
+            border-top: 1px solid var(--line);
+            box-shadow: 0 -12px 30px rgba(19, 32, 44, .12);
+            transform: translateY(120%);
+            transition: transform .5s ease;
+        }
+
+        .cookie-banner.show {
+            transform: translateY(0);
+        }
+
+        .cookie-banner[hidden] {
+            display: none;
+        }
+
+        .cookie-banner p {
+            color: var(--ink-soft);
+            font-size: 14px;
+            max-width: 64ch;
+            margin: 0;
+        }
+
+        .cookie-actions {
+            display: flex;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .cookie-actions .btn {
+            padding: 10px 20px;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 700px) {
+            .cookie-banner {
+                flex-direction: column;
+                align-items: stretch;
+                text-align: center;
+            }
+
+            .cookie-actions {
+                justify-content: center;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .cookie-banner {
+                transition: none;
+            }
+        }
     </style>
 </head>
 
@@ -1133,6 +1199,18 @@
         <p class="disclaimer">As questões deste ebook foram elaboradas originalmente, no estilo e no nível das principais bancas de concurso, para fins de treino e fixação — não são reproduções de provas oficiais já aplicadas.</p>
     </footer>
 
+    <div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Aviso de cookies">
+        <p>
+            Este site usa cookies para melhorar sua experiência de navegação. Ao clicar em "Aceitar", você
+            concorda com o uso de cookies.
+        </p>
+        <div class="cookie-actions">
+            <button type="button" class="btn btn-ghost" id="cookieDecline">Recusar</button>
+            <button type="button" class="btn btn-primary" id="cookieAccept">Aceitar</button>
+        </div>
+    </div>
+
+    <script src="cookie-consent.js"></script>
 </body>
 
 </html>
