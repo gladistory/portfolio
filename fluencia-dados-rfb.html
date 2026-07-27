@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fluência em Dados — Receita Federal | Programando o Mundo</title>
+    <meta name="description" content="Descomplicando a Fluência em Dados — Receita Federal: os 12 subtemas do Edital nº 1/2022 (RFB/FGV), explicados sem enrolação e treinados com 31 questões comentadas.">
+    <meta property="og:title" content="Fluência em Dados — Receita Federal | Programando o Mundo">
+    <meta property="og:description" content="Os 12 subtemas do Edital nº 1/2022 (RFB/FGV), explicados sem enrolação e treinados com 31 questões comentadas.">
+    <meta property="og:image" content="img/ebook-fluencia-dados-capa.png">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <style>
+        :root {
+            --bg: #f6f1e6;
+            --bg-alt: #eee5d1;
+            --paper: #fbf8f1;
+            --ink: #13202c;
+            --ink-soft: #4d5b66;
+            --ink-faint: #7c8892;
+            --navy: #173a5c;
+            --navy-deep: #0d2338;
+            --teal: #0e8a80;
+            --teal-deep: #0a655e;
+            --gold: #b1801f;
+            --ok: #1f7a4d;
+            --err: #a92e21;
+            --line: rgba(19, 32, 44, 0.15);
+            --line-soft: rgba(19, 32, 44, 0.08);
+            --shadow: 0 1px 2px rgba(19, 32, 44, 0.07), 0 10px 28px rgba(19, 32, 44, 0.07);
+            --font-display: Charter, 'Iowan Old Style', 'Palatino Linotype', Georgia, 'Times New Roman', serif;
+            --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            --font-mono: ui-monospace, 'SF Mono', 'Cascadia Code', 'Roboto Mono', Consolas, monospace;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #0a1620;
+                --bg-alt: #0f202d;
+                --paper: #0f202d;
+                --ink: #eef2ef;
+                --ink-soft: #aab8c0;
+                --ink-faint: #7c8b93;
+                --navy: #8fb8e3;
+                --navy-deep: #cfe2f5;
+                --teal: #37d2c6;
+                --teal-deep: #22a99e;
+                --gold: #e2ac5f;
+                --ok: #57c286;
+                --err: #f08a7c;
+                --line: rgba(238, 242, 239, 0.16);
+                --line-soft: rgba(238, 242, 239, 0.08);
+                --shadow: 0 1px 2px rgba(0, 0, 0, 0.5), 0 14px 32px rgba(0, 0, 0, 0.4);
+            }
+        }
+
+        :root[data-theme="dark"] {
+            --bg: #0a1620;
+            --bg-alt: #0f202d;
+            --paper: #0f202d;
+            --ink: #eef2ef;
+            --ink-soft: #aab8c0;
+            --ink-faint: #7c8b93;
+            --navy: #8fb8e3;
+            --navy-deep: #cfe2f5;
+            --teal: #37d2c6;
+            --teal-deep: #22a99e;
+            --gold: #e2ac5f;
+            --ok: #57c286;
+            --err: #f08a7c;
+            --line: rgba(238, 242, 239, 0.16);
+            --line-soft: rgba(238, 242, 239, 0.08);
+            --shadow: 0 1px 2px rgba(0, 0, 0, 0.5), 0 14px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        :root[data-theme="light"] {
+            --bg: #f6f1e6;
+            --bg-alt: #eee5d1;
+            --paper: #fbf8f1;
+            --ink: #13202c;
+            --ink-soft: #4d5b66;
+            --ink-faint: #7c8892;
+            --navy: #173a5c;
+            --navy-deep: #0d2338;
+            --teal: #0e8a80;
+            --teal-deep: #0a655e;
+            --gold: #b1801f;
+            --ok: #1f7a4d;
+            --err: #a92e21;
+            --line: rgba(19, 32, 44, 0.15);
+            --line-soft: rgba(19, 32, 44, 0.08);
+            --shadow: 0 1px 2px rgba(19, 32, 44, 0.07), 0 10px 28px rgba(19, 32, 44, 0.07);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--ink);
+            font-family: var(--font-body);
+            line-height: 1.55;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .wrap {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: var(--font-display);
+            font-weight: 600;
+            color: var(--ink);
+            text-wrap: balance;
+            margin: 0;
+        }
+
+        .eyebrow {
+            font-family: var(--font-mono);
+            font-size: 12.5px;
+            letter-spacing: .10em;
+            text-transform: uppercase;
+            color: var(--teal-deep);
+            font-weight: 600;
+        }
+
+        ::selection {
+            background: var(--teal);
+            color: var(--paper);
+        }
+
+        :focus-visible {
+            outline: 2.5px solid var(--teal);
+            outline-offset: 3px;
+            border-radius: 3px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            * {
+                animation-duration: .001ms !important;
+                transition-duration: .001ms !important;
+            }
+        }
+
+        /* ---------- header ---------- */
+        header.site {
+            position: sticky;
+            top: 0;
+            z-index: 40;
+            background: color-mix(in srgb, var(--bg) 88%, transparent);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--line-soft);
+        }
+
+        .site-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 24px;
+        }
+
+        .wordmark {
+            font-family: var(--font-mono);
+            font-size: 12.5px;
+            letter-spacing: .09em;
+            text-transform: uppercase;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .wordmark .dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--teal);
+            flex: none;
+        }
+
+        .handle {
+            font-family: var(--font-mono);
+            font-size: 12.5px;
+            color: var(--ink-faint);
+            display: none;
+        }
+
+        @media(min-width:640px) {
+            .handle {
+                display: inline;
+            }
+        }
+
+        /* ---------- hero ---------- */
+        .hero {
+            position: relative;
+            overflow: hidden;
+            padding: 76px 0 64px;
+        }
+
+        .hero-grid-bg {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background-image: radial-gradient(circle at 1px 1px, var(--line) 1px, transparent 1.6px);
+            background-size: 26px 26px;
+            -webkit-mask-image: radial-gradient(ellipse 70% 60% at 70% 20%, black 10%, transparent 72%);
+            mask-image: radial-gradient(ellipse 70% 60% at 70% 20%, black 10%, transparent 72%);
+            opacity: .55;
+        }
+
+        .hero-inner {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 34px;
+        }
+
+        .hero-copy {
+            display: grid;
+            gap: 34px;
+        }
+
+        .hero-cover-img {
+            width: 100%;
+            height: auto;
+            max-width: 260px;
+            margin: 0 auto;
+            display: block;
+            filter: drop-shadow(0 24px 30px rgba(19, 32, 44, .28));
+        }
+
+        @media (min-width: 900px) {
+            .hero-inner {
+                grid-template-columns: 1.1fr .9fr;
+                grid-template-rows: auto auto;
+                column-gap: 48px;
+                row-gap: 28px;
+                align-items: start;
+            }
+
+            .hero-copy {
+                grid-column: 1;
+                grid-row: 1;
+            }
+
+            .statrow {
+                grid-column: 1;
+                grid-row: 2;
+                margin-top: 0;
+            }
+
+            .hero-visual {
+                grid-column: 2;
+                grid-row: 1 / 3;
+                align-self: center;
+            }
+
+            .hero-cover-img {
+                max-width: 380px;
+            }
+        }
+
+        .hero-top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 5.4vw, 54px);
+            line-height: 1.08;
+            letter-spacing: -.01em;
+            max-width: 16ch;
+        }
+
+        .hero h1 em {
+            font-style: normal;
+            color: var(--teal-deep);
+        }
+
+        .hero-sub {
+            font-size: 18px;
+            color: var(--ink-soft);
+            max-width: 52ch;
+            margin-top: 16px;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+
+        .btn {
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 15.5px;
+            border-radius: 8px;
+            padding: 13px 22px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 1.5px solid transparent;
+            cursor: pointer;
+            transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .btn-primary {
+            background: var(--navy);
+            color: var(--paper);
+            box-shadow: var(--shadow);
+        }
+
+        :root[data-theme="dark"] .btn-primary {
+            background: var(--teal);
+            color: var(--navy-deep);
+        }
+
+        @media (prefers-color-scheme:dark) {
+            .btn-primary {
+                background: var(--teal);
+                color: #06211d;
+            }
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 6px 20px rgba(19, 32, 44, .22);
+        }
+
+        .btn-ghost {
+            border-color: var(--line);
+            color: var(--ink);
+        }
+
+        .btn-ghost:hover {
+            border-color: var(--teal-deep);
+            color: var(--teal-deep);
+        }
+
+        .statrow {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+            margin-top: 10px;
+        }
+
+        .statrow div {
+            padding: 18px 14px;
+            border-left: 1px solid var(--line);
+        }
+
+        .statrow div:first-child {
+            border-left: none;
+        }
+
+        .stat-num {
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: clamp(22px, 3.2vw, 30px);
+            color: var(--navy);
+            font-variant-numeric: tabular-nums;
+        }
+
+        .stat-label {
+            font-size: 12.5px;
+            color: var(--ink-soft);
+            margin-top: 3px;
+            line-height: 1.3;
+        }
+
+        @media(max-width:700px) {
+            .statrow {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .statrow div:nth-child(3) {
+                border-left: none;
+            }
+        }
+
+        /* ---------- generic section ---------- */
+        section {
+            padding: 64px 0;
+            border-top: 1px solid var(--line-soft);
+        }
+
+        .section-head {
+            max-width: 62ch;
+            margin-bottom: 36px;
+        }
+
+        .section-head h2 {
+            font-size: clamp(24px, 3.4vw, 34px);
+            margin-top: 10px;
+        }
+
+        .section-head p {
+            color: var(--ink-soft);
+            font-size: 16.5px;
+            margin-top: 12px;
+        }
+
+        /* ---------- problem / three pillars ---------- */
+        .pillars {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: var(--line);
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .pillar {
+            background: var(--paper);
+            padding: 26px 22px;
+        }
+
+        .pillar .pnum {
+            font-family: var(--font-mono);
+            color: var(--teal-deep);
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        .pillar h3 {
+            font-size: 19px;
+            margin-top: 8px;
+        }
+
+        .pillar p {
+            color: var(--ink-soft);
+            font-size: 14.5px;
+            margin-top: 8px;
+        }
+
+        @media(max-width:760px) {
+            .pillars {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ---------- module dossier ---------- */
+        .modgrid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 14px;
+        }
+
+        .modcard {
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-left: 3px solid var(--teal-deep);
+            border-radius: 8px;
+            padding: 20px 20px 18px;
+            box-shadow: var(--shadow);
+            transition: transform .15s ease;
+        }
+
+        .modcard:hover {
+            transform: translateY(-2px);
+        }
+
+        .modtag {
+            font-family: var(--font-mono);
+            font-size: 11.5px;
+            letter-spacing: .06em;
+            color: var(--ink-faint);
+            text-transform: uppercase;
+        }
+
+        .modcard h3 {
+            font-size: 18px;
+            margin-top: 6px;
+        }
+
+        .modcard p {
+            font-size: 14px;
+            color: var(--ink-soft);
+            margin-top: 8px;
+        }
+
+        .modcard .modq {
+            font-family: var(--font-mono);
+            font-size: 11.5px;
+            color: var(--teal-deep);
+            margin-top: 12px;
+            display: block;
+        }
+
+        /* ---------- exam proof cards ---------- */
+        .examgrid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media(max-width:820px) {
+            .examgrid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        details.exam-card {
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            padding: 0;
+            overflow: hidden;
+        }
+
+        details.exam-card summary {
+            list-style: none;
+            cursor: pointer;
+            padding: 22px 22px 18px;
+            position: relative;
+        }
+
+        details.exam-card summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .q-tag {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: .07em;
+            text-transform: uppercase;
+            color: var(--ink-faint);
+        }
+
+        .q-text {
+            font-size: 16px;
+            margin-top: 10px;
+            color: var(--ink);
+        }
+
+        .q-opts {
+            margin: 12px 0 0;
+            padding: 0;
+            list-style: none;
+            font-size: 14.5px;
+            color: var(--ink-soft);
+            display: grid;
+            gap: 4px;
+        }
+
+        .q-opts li {
+            font-family: var(--font-mono);
+            font-size: 13.5px;
+        }
+
+        .q-toggle {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--teal-deep);
+            text-transform: uppercase;
+            letter-spacing: .06em;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 16px;
+            font-weight: 700;
+        }
+
+        .q-toggle::after {
+            content: "";
+            width: 7px;
+            height: 7px;
+            border-right: 1.6px solid currentColor;
+            border-bottom: 1.6px solid currentColor;
+            transform: rotate(45deg);
+            transition: transform .2s ease;
+        }
+
+        details[open] .q-toggle::after {
+            transform: rotate(-135deg);
+        }
+
+        details[open] .q-toggle .lbl::before {
+            content: "Ocultar gabarito";
+        }
+
+        .q-toggle .lbl::before {
+            content: "Ver gabarito";
+            font-size: 12px;
+        }
+
+        .q-toggle .lbl {
+            font-size: 0;
+        }
+
+        .q-answer {
+            border-top: 1px dashed var(--line);
+            padding: 18px 22px 22px;
+            background: var(--bg-alt);
+        }
+
+        .gabarito {
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: .04em;
+            padding: 4px 10px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .gabarito.err {
+            color: var(--err);
+            background: color-mix(in srgb, var(--err) 14%, transparent);
+        }
+
+        .gabarito.ok {
+            color: var(--ok);
+            background: color-mix(in srgb, var(--ok) 14%, transparent);
+        }
+
+        .q-answer p {
+            font-size: 14.5px;
+            color: var(--ink-soft);
+            margin: 10px 0 0;
+        }
+
+        /* ---------- bonus dossier ---------- */
+        .bonusbox {
+            background: var(--navy-deep);
+            color: #eef2ef;
+            border-radius: 12px;
+            padding: 38px 36px;
+            display: grid;
+            gap: 22px;
+        }
+
+        :root[data-theme="dark"] .bonusbox {
+            background: var(--bg-alt);
+            border: 1px solid var(--line);
+        }
+
+        @media (prefers-color-scheme:dark) {
+            .bonusbox {
+                background: var(--bg-alt);
+                border: 1px solid var(--line);
+            }
+        }
+
+        .bonusbox h2 {
+            color: #fff;
+            font-size: clamp(22px, 3vw, 28px);
+        }
+
+        :root[data-theme="dark"] .bonusbox h2 {
+            color: var(--ink);
+        }
+
+        @media (prefers-color-scheme:dark) {
+            .bonusbox h2 {
+                color: var(--ink);
+            }
+        }
+
+        .bonusbox p.lead {
+            color: #c7d3da;
+            font-size: 16px;
+            max-width: 60ch;
+        }
+
+        :root[data-theme="dark"] .bonusbox p.lead {
+            color: var(--ink-soft);
+        }
+
+        @media (prefers-color-scheme:dark) {
+            .bonusbox p.lead {
+                color: var(--ink-soft);
+            }
+        }
+
+        .chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+        }
+
+        .chip {
+            font-family: var(--font-mono);
+            font-size: 12.5px;
+            color: #dff3f0;
+            border: 1px solid rgba(255, 255, 255, .28);
+            border-radius: 20px;
+            padding: 7px 13px;
+        }
+
+        :root[data-theme="dark"] .chip {
+            color: var(--ink);
+            border-color: var(--line);
+        }
+
+        @media (prefers-color-scheme:dark) {
+            .chip {
+                color: var(--ink);
+                border-color: var(--line);
+            }
+        }
+
+        /* ---------- faq ---------- */
+        .faq {
+            display: grid;
+            gap: 1px;
+            background: var(--line);
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .faq details {
+            background: var(--paper);
+            padding: 20px 22px;
+        }
+
+        .faq summary {
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 15.5px;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .faq summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq summary::after {
+            content: "+";
+            font-family: var(--font-mono);
+            color: var(--teal-deep);
+            font-size: 20px;
+            flex: none;
+        }
+
+        .faq details[open] summary::after {
+            content: "–";
+        }
+
+        .faq p {
+            color: var(--ink-soft);
+            font-size: 14.5px;
+            margin: 12px 0 0;
+            max-width: 64ch;
+        }
+
+        /* ---------- closing / ficha ---------- */
+        .ficha {
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            display: grid;
+            gap: 26px;
+            grid-template-columns: 1.1fr .9fr;
+        }
+
+        @media(max-width:760px) {
+            .ficha {
+                grid-template-columns: 1fr;
+                padding: 28px;
+            }
+        }
+
+        .ficha h2 {
+            font-size: clamp(24px, 3.4vw, 30px);
+        }
+
+        .ficha ul {
+            list-style: none;
+            margin: 18px 0 0;
+            padding: 0;
+            display: grid;
+            gap: 10px;
+        }
+
+        .ficha li {
+            display: flex;
+            gap: 10px;
+            font-size: 15px;
+            align-items: flex-start;
+        }
+
+        .ficha li::before {
+            content: "—";
+            color: var(--teal-deep);
+            font-family: var(--font-mono);
+            flex: none;
+        }
+
+        .ficha-side {
+            border-left: 1px solid var(--line);
+            padding-left: 26px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 14px;
+        }
+
+        @media(max-width:760px) {
+            .ficha-side {
+                border-left: none;
+                border-top: 1px dashed var(--line);
+                padding-left: 0;
+                padding-top: 22px;
+            }
+        }
+
+        .price-note {
+            font-size: 13px;
+            color: var(--ink-faint);
+        }
+
+        footer {
+            padding: 40px 0 60px;
+        }
+
+        .foot-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 16px;
+            align-items: center;
+            border-top: 1px solid var(--line-soft);
+            padding-top: 24px;
+        }
+
+        .disclaimer {
+            font-size: 12.5px;
+            color: var(--ink-faint);
+            max-width: 70ch;
+            margin-top: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="site">
+        <div class="wrap site-bar">
+            <span class="wordmark"><span class="dot"></span>Programando o Mundo</span>
+            <span class="handle">@programandoomundo</span>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" style="border-top:none;padding-top:76px;">
+            <div class="hero-grid-bg"></div>
+            <div class="wrap hero-inner">
+                <div class="hero-copy">
+                    <div class="hero-top">
+                        <div>
+                            <span class="eyebrow">Edital nº 1/2022 · Receita Federal · Banca FGV</span>
+                            <h1 style="margin-top:14px;">As questões de <em>Fluência em Dados</em> que a FGV já cobrou — e vai cobrar de novo</h1>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="hero-sub">Volume 2 da série <strong>Descomplicando o TI para Concursos</strong>: os 12 subtemas oficiais do Anexo I, explicados sem enrolação e treinados com 31 questões comentadas no estilo Cebraspe e FGV.</p>
+                        <div class="hero-ctas">
+                            <a class="btn btn-primary" href="#ficha">Garantir meu exemplar</a>
+                            <a class="btn btn-ghost" href="#modulos">Ver o que tem dentro</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <img class="hero-cover-img" src="img/ebook-fluencia-dados-capa.png" alt="Capa do ebook Descomplicando a Fluência em Dados — Receita Federal, Volume 2, Programando o Mundo" width="1200" height="1500">
+                </div>
+                <div class="statrow">
+                    <div>
+                        <div class="stat-num">12</div>
+                        <div class="stat-label">subtemas oficiais do edital</div>
+                    </div>
+                    <div>
+                        <div class="stat-num">07</div>
+                        <div class="stat-label">módulos completos</div>
+                    </div>
+                    <div>
+                        <div class="stat-num">31</div>
+                        <div class="stat-label">questões comentadas com gabarito</div>
+                    </div>
+                    <div>
+                        <div class="stat-num">15</div>
+                        <div class="stat-label">questões possíveis · Analista-Tributário</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="porque">
+            <div class="wrap">
+                <div class="section-head">
+                    <span class="eyebrow">Por que isso pesa na sua nota</span>
+                    <h2>Fluência em Dados não é um recorte genérico de "tecnologia"</h2>
+                    <p>É conteúdo programático oficial, item por item do Anexo I — com peso relevante dentro do bloco de Conhecimentos Básicos: 10 questões para Auditor-Fiscal e 15 para Analista-Tributário, só nesse tema. Quem estuda "TI genérico" chega na prova sem ter visto metade do que cai.</p>
+                </div>
+                <div class="pillars">
+                    <div class="pillar">
+                        <span class="pnum">01 · Conceito</span>
+                        <h3>Sem complicação</h3>
+                        <p>Cada subtema explicado de forma direta, com analogias do dia a dia — nada de definição de dicionário sem contexto.</p>
+                    </div>
+                    <div class="pillar">
+                        <span class="pnum">02 · Foco</span>
+                        <h3>O que mais cai na prova</h3>
+                        <p>Lista rápida, por módulo, dos pontos que Cebraspe e FGV mais exploram — o resumo que você revisa na véspera.</p>
+                    </div>
+                    <div class="pillar">
+                        <span class="pnum">03 · Treino</span>
+                        <h3>Questões comentadas</h3>
+                        <p>3 questões por módulo, Certo/Errado e múltipla escolha, cada uma com gabarito e o raciocínio explicado.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="modulos">
+            <div class="wrap">
+                <div class="section-head">
+                    <span class="eyebrow">Os 7 módulos</span>
+                    <h2>Item por item do Anexo I — nenhum subtema de fora</h2>
+                    <p>Cada módulo segue a mesma estrutura: conceito, pegadinhas de prova e questões comentadas.</p>
+                </div>
+                <div class="modgrid">
+                    <div class="modcard">
+                        <span class="modtag">Módulo 01</span>
+                        <h3>Fundamentos de Dados</h3>
+                        <p>Dado → informação → conhecimento, atributos qualitativos/quantitativos, métrica x KPI e o fluxo ETL.</p>
+                        <span class="modq">3 questões comentadas</span>
+                    </div>
+                    <div class="modcard">
+                        <span class="modtag">Módulo 02</span>
+                        <h3>Análise e Tendências</h3>
+                        <p>Os 4 tipos de Analytics, clustering como aprendizado não supervisionado, tendência x projeção.</p>
+                        <span class="modq">3 questões comentadas</span>
+                    </div>
+                    <div class="modcard">
+                        <span class="modtag">Módulo 03</span>
+                        <h3>IA na Prática</h3>
+                        <p>Hierarquia IA ⊃ Machine Learning ⊃ Deep Learning, os três tipos de aprendizado e PLN.</p>
+                        <span class="modq">3 questões comentadas</span>
+                    </div>
+                    <div class="modcard">
+                        <span class="modtag">Módulo 04</span>
+                        <h3>Governança de Dados</h3>
+                        <p>Modelos centralizado, compartilhado e colegiado — quem decide o quê, e com que padrão.</p>
+                        <span class="modq">3 questões comentadas</span>
+                    </div>
+                    <div class="modcard">
+                        <span class="modtag">Módulo 05</span>
+                        <h3>Ciência de Dados</h3>
+                        <p>Ciclo de vida do projeto e os papéis: Data Engineer, Data Analyst e Data Scientist.</p>
+                        <span class="modq">3 questões comentadas</span>
+                    </div>
+                    <div class="modcard">
+                        <span class="modtag">Módulo 06</span>
+                        <h3>Big Data e Nuvem</h3>
+                        <p>Os 5 Vs, arquitetura em camadas, IaaS/PaaS/SaaS e nuvem pública, privada e híbrida.</p>
+                        <span class="modq">3 questões comentadas</span>
+                    </div>
+                    <div class="modcard">
+                        <span class="modtag">Módulo 07</span>
+                        <h3>Ferramentas: Linguagens e NoSQL</h3>
+                        <p>Python x R, os 4 tipos de banco NoSQL e a diferença entre Hadoop e Spark.</p>
+                        <span class="modq">3 questões comentadas</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="prova">
+            <div class="wrap">
+                <div class="section-head">
+                    <span class="eyebrow">Prova em mãos</span>
+                    <h2>É este o formato — teste antes de levar</h2>
+                    <p>Duas questões reais do ebook, uma de cada módulo. Toque para revelar o gabarito comentado, exatamente como aparece no PDF.</p>
+                </div>
+                <div class="examgrid">
+                    <details class="exam-card">
+                        <summary>
+                            <span class="q-tag">Módulo 1 · Questão 1 · estilo Cebraspe</span>
+                            <p class="q-text">Um atributo qualitativo ordinal é aquele que representa categorias sem nenhuma ordem ou hierarquia entre elas, como a cor dos olhos de uma pessoa.</p>
+                            <span class="q-toggle"><span class="lbl"></span></span>
+                        </summary>
+                        <div class="q-answer">
+                            <span class="gabarito err">GABARITO: ERRADO</span>
+                            <p>Essa descrição corresponde ao atributo qualitativo nominal. O ordinal, ao contrário, tem uma ordem natural entre as categorias — como nível de escolaridade ou classificação de risco.</p>
+                        </div>
+                    </details>
+                    <details class="exam-card">
+                        <summary>
+                            <span class="q-tag">Extra · Questão 1 · estilo FGV · nível avançado</span>
+                            <p class="q-text">Qual cláusula SQL deve ser usada para filtrar grupos já formados por um GROUP BY, diferente do WHERE, que filtra linhas individuais antes do agrupamento?</p>
+                            <ul class="q-opts">
+                                <li>a) WHERE</li>
+                                <li>b) HAVING</li>
+                                <li>c) ORDER BY</li>
+                                <li>d) DISTINCT</li>
+                                <li>e) LIMIT</li>
+                            </ul>
+                            <span class="q-toggle"><span class="lbl"></span></span>
+                        </summary>
+                        <div class="q-answer">
+                            <span class="gabarito ok">GABARITO: B — HAVING</span>
+                            <p>WHERE filtra linhas antes de agrupar; HAVING filtra os grupos já formados pelo GROUP BY, com base em uma condição sobre valores agregados. Tema que já apareceu em prova real da FGV para a Receita Federal.</p>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section id="extras">
+            <div class="wrap">
+                <div class="bonusbox">
+                    <div>
+                        <span class="eyebrow">Bônus · dossiê avançado</span>
+                        <h2 style="margin-top:10px;">10 questões extras, no nível que a FGV realmente aplicou em 2023</h2>
+                        <p class="lead">A prova de 2023 cobrou até assunto fora da redação literal do edital — SQL e bancos relacionais — e não foi rasa: redes neurais, k-NN, leitura de código Python. Estas 10 questões extras foram calibradas nesse mesmo padrão, 100% no formato real da banca.</p>
+                    </div>
+                    <div class="chips">
+                        <span class="chip">SQL · HAVING</span>
+                        <span class="chip">k-NN</span>
+                        <span class="chip">Backpropagation</span>
+                        <span class="chip">Leitura de código Python</span>
+                        <span class="chip">Overfitting × Underfitting</span>
+                        <span class="chip">Recall × Precisão</span>
+                        <span class="chip">Árvore de decisão</span>
+                        <span class="chip">Validação cruzada</span>
+                        <span class="chip">Correlação ≠ Causalidade</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq">
+            <div class="wrap">
+                <div class="section-head">
+                    <span class="eyebrow">Perguntas frequentes</span>
+                    <h2>Antes de garantir o seu</h2>
+                </div>
+                <div class="faq">
+                    <details>
+                        <summary>Esse ebook segue o edital oficial?</summary>
+                        <p>Sim. É o conteúdo programático de Fluência em Dados exatamente como aparece no Anexo I do Edital nº 1/2022 (RFB, banca FGV) — item por item, sem recorte genérico de tecnologia.</p>
+                    </details>
+                    <details>
+                        <summary>As questões são da prova oficial já aplicada?</summary>
+                        <p>Não. Foram elaboradas originalmente, no estilo e no nível das principais bancas de concurso, para fins de treino e fixação — não são reproduções de provas já aplicadas.</p>
+                    </details>
+                    <details>
+                        <summary>Preciso ter o Volume 1 antes deste?</summary>
+                        <p>Não é obrigatório. Mas os módulos 4 (Banco de Dados) e 9 (Estrutura de Dados) do Volume 1 são uma base complementar útil, principalmente para os módulos 6 e 7 deste volume.</p>
+                    </details>
+                    <details>
+                        <summary>Serve para Auditor-Fiscal e para Analista-Tributário?</summary>
+                        <p>Sim. Os 12 subtemas cobrados são comuns aos dois cargos — o que muda é apenas o número de questões do tema na prova (10 e 15, respectivamente).</p>
+                    </details>
+                    <details>
+                        <summary>Em que formato eu recebo?</summary>
+                        <p>PDF digital, com acesso imediato após a confirmação — mesmo formato usado nas capturas de tela desta página.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section id="ficha">
+            <div class="wrap">
+                <div class="ficha">
+                    <div>
+                        <span class="eyebrow">Ficha do material</span>
+                        <h2 style="margin-top:10px;">Descomplicando a Fluência em Dados — Receita Federal</h2>
+                        <ul>
+                            <li>7 módulos, cada um com conceito, pegadinhas de prova e questões comentadas</li>
+                            <li>31 questões com gabarito e comentário — estilo Cebraspe (Certo/Errado) e FGV (múltipla escolha)</li>
+                            <li>10 questões extras nível avançado: SQL, k-NN, redes neurais, leitura de código Python</li>
+                            <li>Glossário rápido para revisão de véspera</li>
+                            <li>PDF digital, acesso imediato</li>
+                        </ul>
+                    </div>
+                    <div class="ficha-side">
+                        <a class="btn btn-primary" href="#ficha" style="justify-content:center;">Garantir meu exemplar</a>
+                        <span class="price-note">Volume 2 da série Descomplicando o TI para Concursos, por @programandoomundo.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="wrap">
+        <div class="foot-row">
+            <span class="wordmark"><span class="dot"></span>Programando o Mundo</span>
+            <span class="handle" style="display:inline;">Revisão semanal em vídeo no Instagram @programandoomundo</span>
+        </div>
+        <p class="disclaimer">As questões deste ebook foram elaboradas originalmente, no estilo e no nível das principais bancas de concurso, para fins de treino e fixação — não são reproduções de provas oficiais já aplicadas.</p>
+    </footer>
+
+</body>
+
+</html>
